@@ -14,5 +14,3 @@ export function Layout({ children }: LayoutProps) {
     </Box>
   );
 }
-
-export default Layout;
