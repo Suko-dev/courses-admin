@@ -29,7 +29,7 @@ export class Category extends Entity<CategoryProps> {
       description: props.description ?? null,
       isActive: props.isActive ?? false,
       createdAt: props.createdAt ?? new Date(),
-      code: `ctg_${props.name}`,
+      code: props.code ? props.code : `ctg_${props.name}`,
       deletedAt: props.deletedAt,
     };
   }
@@ -54,10 +54,7 @@ export class Category extends Entity<CategoryProps> {
     return this._props.code;
   }
 
-  static Create(
-    props: CreateCategoryProps,
-    id?: CategoryId
-  ): Result<Error, Category> {
+  static Create(props: CreateCategoryProps, id?: CategoryId): Result<Error, Category> {
     const categoryId = this.getCategoryId(id);
 
     const category = new Category(props, categoryId);
