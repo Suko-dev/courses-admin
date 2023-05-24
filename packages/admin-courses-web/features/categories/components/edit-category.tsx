@@ -36,10 +36,7 @@ export function EditCategory({ code }: EditCategoryProps) {
     setCategory({ ...(category as Category), name: value });
   }
 
-  function handleToggle(
-    event: React.ChangeEvent<HTMLInputElement>,
-    isActive: boolean
-  ): void {
+  function handleToggle(event: React.ChangeEvent<HTMLInputElement>, isActive: boolean): void {
     setCategory({ ...category, isActive });
   }
 
@@ -48,7 +45,7 @@ export function EditCategory({ code }: EditCategoryProps) {
     setDisabled(true);
     await editCategory(category);
     setDisabled(false);
-    enqueueSnackbar('Category updated', { variant: 'success' });
+    enqueueSnackbar('Subcategory updated', { variant: 'success' });
     await Router.push('/categories');
   }
 
