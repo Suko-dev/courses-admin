@@ -1,4 +1,5 @@
 import { Category } from '../category';
+import { CategoryId } from '../category-id.vo';
 
 describe('Category unit test', () => {
   const name = 'category';
@@ -14,7 +15,20 @@ describe('Category unit test', () => {
     expect(category.description).toBeNull();
   });
 
-  describe('when seting a new category description', () => {
+  describe('when passing an existing id', () => {
+    it('should keep that id', () => {
+      // Arrange
+      const id = CategoryId.create().getSuccess() as CategoryId;
+
+      // Act
+      const category = <Category>Category.Create({ name }, id).value;
+
+      // Assert
+      expect(id.equals(category.uniqueId)).toBeTruthy();
+    });
+  });
+
+  describe('when setting a new category description', () => {
     it('should change its description', () => {
       const newDescriptino = 'this is a description';
       const category = <Category>Category.Create({ name }).value;
@@ -38,9 +52,7 @@ describe('Category unit test', () => {
 
     describe('given it is already active', () => {
       it('should do nothing', () => {
-        const category = <Category>(
-          Category.Create({ name, isActive: true }).value
-        );
+        const category = <Category>Category.Create({ name, isActive: true }).value;
 
         category.activate();
 
@@ -52,9 +64,7 @@ describe('Category unit test', () => {
   describe('when deactivating a category', () => {
     describe('given it is active', () => {
       it('should set isActive to false', () => {
-        const category = <Category>(
-          Category.Create({ name, isActive: true }).value
-        );
+        const category = <Category>Category.Create({ name, isActive: true }).value;
 
         category.deactivate();
 
@@ -64,9 +74,7 @@ describe('Category unit test', () => {
 
     describe('given it is already inactive', () => {
       it('should do nothing', () => {
-        const category = <Category>(
-          Category.Create({ name, isActive: true }).value
-        );
+        const category = <Category>Category.Create({ name, isActive: true }).value;
 
         category.deactivate();
 

@@ -24,10 +24,7 @@ export function CreateCategory() {
     setCategory({ ...category, [name]: value.trim() });
   }
 
-  function handleToggle(
-    event: React.ChangeEvent<HTMLInputElement>,
-    isActive: boolean
-  ): void {
+  function handleToggle(event: React.ChangeEvent<HTMLInputElement>, isActive: boolean): void {
     setCategory({ ...category, isActive });
   }
 
@@ -36,7 +33,7 @@ export function CreateCategory() {
     setDisabled(true);
     await createCategory(category);
     setDisabled(false);
-    enqueueSnackbar('Category created', { variant: 'success' });
+    enqueueSnackbar('Subcategory created', { variant: 'success' });
     await Router.push('/categories');
   }
 

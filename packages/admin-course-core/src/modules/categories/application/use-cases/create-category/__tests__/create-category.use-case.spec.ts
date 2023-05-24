@@ -1,16 +1,16 @@
 import { CreateCategoryUseCase } from '../create-category';
-import { CategoriesRepository } from '../../../../infra/repository/categories.repository';
-import { InMemoryCategoriesRepository } from '../../../../infra/repository/in-memory-categories.repository';
+import { CategoriesMutationRepository } from '../../../../infra/repository/categories-mutation-repository';
+import { InMemoryCategoriesMutationRepository } from '../../../../infra/repository/in-memory-categories-mutation-repository';
 import { Category } from '../../../../domain/category';
 import { CreateCategoryInput } from '../types/createCategoryInput';
 import { fail } from '@admin-cursos/core';
 
 describe('CreateCategoryUseCase Unit Test', () => {
   let createCategoryUseCase: CreateCategoryUseCase;
-  let repository: CategoriesRepository;
+  let repository: CategoriesMutationRepository;
 
   beforeEach(() => {
-    repository = new InMemoryCategoriesRepository();
+    repository = new InMemoryCategoriesMutationRepository();
     createCategoryUseCase = new CreateCategoryUseCase(repository);
   });
 

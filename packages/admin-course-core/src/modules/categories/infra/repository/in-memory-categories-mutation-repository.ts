@@ -1,8 +1,8 @@
-import { CategoriesRepository } from './categories.repository';
+import { CategoriesMutationRepository } from './categories-mutation-repository';
 import { Category } from '../../domain/category';
 import { Result, succeed } from '@admin-cursos/core';
 
-export class InMemoryCategoriesRepository implements CategoriesRepository {
+export class InMemoryCategoriesMutationRepository implements CategoriesMutationRepository {
   private categories: Category[] = [];
 
   async save(category: Category | Category[]): Promise<Result<Error, void>> {
@@ -12,9 +12,5 @@ export class InMemoryCategoriesRepository implements CategoriesRepository {
     this.categories.push(...category);
 
     return succeed();
-  }
-
-  async list(): Promise<Result<Error, Category[]>> {
-    return succeed(this.categories);
   }
 }
