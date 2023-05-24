@@ -5,7 +5,7 @@ describe('Subcategory unit test', () => {
   const name = 'subcategory';
   const mainCategory = 'ctg_category';
 
-  it('should create a new category', () => {
+  it('should create a new subcategory', () => {
     const subcategory = <Subcategory>Subcategory.Create({ name, mainCategory }).value;
 
     expect(subcategory).toBeInstanceOf(Subcategory);
