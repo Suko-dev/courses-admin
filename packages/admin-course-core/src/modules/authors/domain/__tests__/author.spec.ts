@@ -1,7 +1,7 @@
 import { Author } from '../author';
 import { AuthorId } from '../author-id.vo';
 
-describe('Subcategory unit test', () => {
+describe('Author unit test', () => {
   const name = 'Jão';
 
   it('should create a new author', () => {
@@ -18,24 +18,24 @@ describe('Subcategory unit test', () => {
       const id = AuthorId.create().getSuccess() as AuthorId;
 
       // Act
-      const subcategory = <Author>Author.Create({ name }, id).value;
+      const author = <Author>Author.Create({ name }, id).value;
 
       // Assert
-      expect(id.equals(subcategory.uniqueId)).toBeTruthy();
+      expect(id.equals(author.uniqueId)).toBeTruthy();
     });
   });
 
   describe('when setting a new author name', () => {
     it('should change its name', () => {
       // Arrange
-      const newBiography = 'this is a name';
+      const aName = 'this is a name';
       const author = <Author>Author.Create({ name }).value;
 
       // Act
-      author.setName(newBiography);
+      author.setName(aName);
 
       // Assert
-      expect(author.name).toEqual(newBiography);
+      expect(author.name).toEqual(aName);
     });
 
     describe('when new name is invalid', () => {

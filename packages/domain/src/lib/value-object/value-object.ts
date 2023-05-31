@@ -22,8 +22,6 @@ export default abstract class ValueObject<Value = unknown> {
       }
     }
     const valueStr = this.value.toString();
-    return valueStr === '[object Object]'
-      ? JSON.stringify(this.value)
-      : valueStr;
+    return valueStr === '[object Object]' ? JSON.stringify(this.value) : valueStr;
   };
 }

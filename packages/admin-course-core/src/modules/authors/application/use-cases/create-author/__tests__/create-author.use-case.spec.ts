@@ -1,4 +1,4 @@
-import { CreateAuthorUseCase } from '../create-subcategory';
+import { CreateAuthorUseCase } from '../index';
 import { AuthorsMutationRepository } from '../../../../infra/repository/authors-mutation-repository';
 import { InMemoryAuthorsMutationRepository } from '../../../../infra/repository/in-memory-authors-mutation-repository';
 import { Author } from '../../../../domain/author';
